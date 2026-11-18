@@ -1,0 +1,7 @@
+{
+ "name":"afd-app","version":"0.2.0","private":true,"type":"module",
+ "engines":{"node":">=22.12.0"},
+ "scripts":{"dev":"vite","check":"tsc --noEmit","build":"tsc --noEmit && vite build","preview":"vite preview --host 0.0.0.0","types:db":"node scripts/generate-types.cjs"},
+ "dependencies":{"react":"^18.3.1","react-dom":"^18.3.1","react-router-dom":"^6.28.0","qrcode.react":"^4.2.0","@supabase/supabase-js":"^2.49.4","dexie":"^4.0.11","dexie-react-hooks":"^1.1.7","html5-qrcode":"^2.3.8"},
+ "devDependencies":{"@types/react":"^18.3.12","@types/react-dom":"^18.3.1","@vitejs/plugin-react":"^4.3.3","autoprefixer":"^10.4.20","postcss":"^8.4.49","tailwindcss":"^3.4.17","typescript":"^5.6.3","vite":"^6.0.0","vite-plugin-pwa":"^1.0.0","supabase":"^2.20.12"}
+}

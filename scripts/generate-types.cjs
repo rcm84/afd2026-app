@@ -1,0 +1,11 @@
+const {spawnSync}=require('node:child_process');
+const {writeFileSync,mkdirSync}=require('node:fs');
+const args=process.argv.slice(2);
+if(!args.length) throw Error('Indica --linked o --local');
+const win=process.platform==='win32';
+if(!((args.length===1 && ['--linked','--local'].includes(args[0])))) throw Error('Argumentos no admitidos');
+const binary=win?'supabase.cmd':'supabase';
+const out=spawnSync(binary,['gen','types','typescript',...args,'--schema','public'],{encoding:'utf8',shell:win,maxBuffer:16*1024*1024});
+if(out.status!==0 || !out.stdout?.includes('export type Database')) throw Error(out.stderr || out.error?.message || 'No se generaron tipos');
+mkdirSync('src/lib/supabase',{recursive:true});
+writeFileSync('src/lib/supabase/database.types.ts',out.stdout);
